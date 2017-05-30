@@ -1,46 +1,51 @@
 set nocompatible
 
-call plug#begin('~/.vim/bundle')
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'airblade/vim-gitgutter'
-Plug 'editorconfig/editorconfig-vim'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Plug 'osyo-manga/vim-over'
-Plug 'mileszs/ack.vim'
-Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'editorconfig/editorconfig-vim'
 
-Plug 'othree/html5.vim'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-haml'
-Plug 'mustache/vim-mustache-handlebars'
+Plugin 'osyo-manga/vim-over'
+Plugin 'mileszs/ack.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
 
-Plug 'JulesWang/css.vim'
-Plug 'ap/vim-css-color'
+Plugin 'othree/html5.vim'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-haml'
+Plugin 'mustache/vim-mustache-handlebars'
 
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
-Plug 'marijnh/tern_for_vim'
-Plug 'mtscout6/syntastic-local-eslint.vim'
+Plugin 'JulesWang/css.vim'
+Plugin 'ap/vim-css-color'
 
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/DeleteTrailingWhitespace'
-Plug 'elixir-lang/vim-elixir'
-Plug 'leafgarland/typescript-vim'
-Plug 'trevordmiller/nova-vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'dracula/vim'
+Plugin 'elzr/vim-json'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
 
-call plug#end()
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/DeleteTrailingWhitespace'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'trevordmiller/nova-vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'dracula/vim'
+
+call vundle#end()
 
 
 " General
