@@ -7,6 +7,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
@@ -40,12 +42,15 @@ Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'trevordmiller/nova-vim'
-Plugin 'w0ng/vim-hybrid'
 Plugin 'dracula/vim'
+Plugin 'trevordmiller/nova-vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'jacoborus/tender.vim'
+Plugin 'junegunn/seoul256.vim'
 
 call vundle#end()
+filetype plugin indent on    " required
 
 
 " General
@@ -59,8 +64,17 @@ set nofoldenable               " No folding
 
 
 " Appearance
+if (has("termguicolors"))
+ set termguicolors
+endif
+
 syntax on                      " Turn on syntax highlighting
-colorscheme nova               " Set the colorscheme
+" Set the colorscheme
+" colorscheme dracula
+" colorscheme nova
+" colorscheme jellybeans
+" colorscheme seoul256
+colorscheme tender
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
 set background=dark            " Use dark themes
@@ -223,6 +237,7 @@ map <Leader>fxa :call ESLintFixAll()<CR>
 " Airline.vim
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
+let g:airline_theme = 'tender'
 
 " Make CtrlP search in the current working directory by default
 " Useful for monorepos
