@@ -28,3 +28,5 @@ for file in `ls .`; do
   # Symlink file to the home directory
   ln -snf "$PWD/$file" "$HOME/.$file"
 done
+
+ln -snf "$PWD/_iterm/com.googlecode.iterm2.plist" "$HOME/com.googlecode.iterm2.plist"
