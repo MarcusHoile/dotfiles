@@ -5,19 +5,19 @@
 
 ## iTerm
 #### Cursor
-| Command | Description |
-| ======= | ===========:|
-|⌘ j | down| 
-|⌘ k | up | |
-|⌘ l | right |
-|⌃ h | delete single character |
-|⌃ k | cut all characters after cursor |
-|⌃ j | Enter |
-|⌃ y | paste |
-|⌥ k | scroll page up |
-|⌥ j | scroll page down |
-|⌘ b | move back a word |
-|⌘ w | move forward a word |
+Command | Description
+ --- | ---
+⌘ j | down
+⌘ k | up
+⌘ l | right
+⌃ h | delete single character
+⌃ k | cut all characters after cursor
+⌃ j | Enter
+⌃ y | paste
+⌥ k | scroll page up
+⌥ j | scroll page down
+⌘ b | move back a word
+⌘ w | move forward a word
  
 #### Panes
 ⌘ ⌃ h | move to pane on the left 
