@@ -17,9 +17,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'osyo-manga/vim-over'
-Plugin 'mileszs/ack.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 
 Plugin 'othree/html5.vim'
 Plugin 'tpope/vim-ragtag'
@@ -30,10 +29,12 @@ Plugin 'JulesWang/css.vim'
 Plugin 'ap/vim-css-color'
 
 Plugin 'elzr/vim-json'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 " Plugin 'marijnh/tern_for_vim'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
+" Plugin 'mtscout6/syntastic-local-eslint.vim'
+
 " most recently used
 Plugin 'yegappan/mru'
 Plugin 'qpkorr/vim-bufkill'
@@ -60,7 +61,7 @@ filetype plugin indent on    " required
 set ttyfast                    " Send more characters at a given time
 set ttimeoutlen=0              " Fix delay when escaping from insert with Esc
 set mouse=a                    " Enable mouse in all in all modes
-set clipboard=unnamed          " Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set clipboard=unnamed
 set history=100                " Number of :cmdline history items to store
 set nostartofline              " Don't reset cursor to start of line when moving around
 set nofoldenable               " No folding
@@ -105,6 +106,7 @@ set listchars=tab:»·,trail:·,extends:>,precedes:<
 set scrolloff=3                " Minimal number of lines to keep above and below the cursor
 set sidescrolloff=3            " Minimal number of columns to keep to the left and right of the cursor
 set winminheight=0             " Allow splits to be reduced to a single line
+set splitright                 " Always open pane on right
 
 
 " Files and buffers
@@ -182,6 +184,8 @@ au FileType html,xml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 au FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 au FileType python setlocal omnifunc=pythoncomplete#Complete
+
+au FocusLost * :wa
 augroup END
 
 
@@ -216,6 +220,8 @@ map k gk
 " Move selected lines up and down
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+" Copy selected text
+vnoremap <C-c> "*y
 
 " Paste toggle
 set pastetoggle=<leader>p
@@ -284,6 +290,13 @@ if executable('rg')
   let g:ctrlp_user_command = 'rg --vimgrep --files --smart-case %s'
   let g:ctrlp_use_caching = 0
 endif
+
+let g:ctrlp_custom_ignore = {
+\ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp\|vendor/bundled$'
+\ }
+
+" List open buffers
+noremap <leader>b :CtrlPBuffer<CR>
 
 " Use rg (ripgrep) for searching in grep and Ack.vim
 if executable('rg')
