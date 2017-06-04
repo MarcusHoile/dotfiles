@@ -32,12 +32,15 @@ Plugin 'ap/vim-css-color'
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
+" most recently used
+Plugin 'yegappan/mru'
+Plugin 'qpkorr/vim-bufkill'
 
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
+" Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
@@ -61,7 +64,13 @@ set clipboard=unnamed          " Use the OS clipboard by default (on versions co
 set history=100                " Number of :cmdline history items to store
 set nostartofline              " Don't reset cursor to start of line when moving around
 set nofoldenable               " No folding
+inoremap jj <Esc>
 
+" Use ; for : in normal and visual mode, less keystrokes
+nnoremap ; :
+vnoremap ; :
+"nnoremap : ;
+"vnoremap : ;
 
 " Appearance
 if (has("termguicolors"))
@@ -119,7 +128,21 @@ set wildignore+=*/node_modules/*
 set wildignore+=*/vendor/*
 set wildignore+=*/log/*,*/tmp/*,*/build/*,*/dist/*,*/doc/*
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd
+nnoremap qq :BD<CR>
+nmap QQ :qall<CR>
+nnoremap qw :w<CR>:BD<CR>
+nnoremap rr :MRU<CR>
 
+"Use TAB to complete when typing words, else inserts TABs as usual.
+"Uses dictionary and source files to find matching words to complete.
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 " Text and editing
 set backspace=indent,eol,start " Backspacing over everything in insert mode
@@ -172,10 +195,13 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Resize splits with arrow keys
-nnoremap <Left> :vertical resize +1<CR>
-nnoremap <Right> :vertical resize -1<CR>
-nnoremap <Up> :resize +1<CR>
-nnoremap <Down> :resize -1<CR>
+nnoremap <Leader>h :vertical resize +1<CR>
+nnoremap <Leader>l :vertical resize -1<CR>
+nnoremap <Leader>j :resize +1<CR>
+nnoremap <Leader>k :resize -1<CR>
+
+" Switch between buffers
+nmap t :bn<CR>
 
 " Fix page up and down
 map <PageUp> <C-U>
@@ -239,9 +265,18 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline_theme = 'tender'
 
+" Search
+
 " Make CtrlP search in the current working directory by default
 " Useful for monorepos
 let g:ctrlp_cmd = 'CtrlP .'
+
+" search current word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Rg<SPACE>
 
 " Use rg (ripgrep) in CtrlP for listing files.
 " Respects .gitignore, and is fast enough to not require caching.
@@ -249,9 +284,6 @@ if executable('rg')
   let g:ctrlp_user_command = 'rg --vimgrep --files --smart-case %s'
   let g:ctrlp_use_caching = 0
 endif
-
-" List open buffers
-noremap <leader>b :CtrlPBuffer<CR>
 
 " Use rg (ripgrep) for searching in grep and Ack.vim
 if executable('rg')
@@ -290,6 +322,7 @@ map <leader>/ :Commentary<CR>
 let g:NERDTreeHijackNetrw = 0
 map <leader>d :NERDTreeToggle<CR>
 map <leader>n :NERDTreeFind<CR>
+let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'public[[dir]]', 'tmp[[dir]]', 'dist[[dir]]']
 
 " Syntastic
 let g:syntastic_javascript_checkers = ['eslint']
