@@ -1,12 +1,14 @@
 # Cheat Sheet
 
 ## General
+Command | Description
+ --- | ---
 ⌃ i | Show iTerm 
 
 ## iTerm
-#### Cursor
 Command | Description
  --- | ---
+⌘ h | left
 ⌘ j | down
 ⌘ k | up
 ⌘ l | right
@@ -18,8 +20,6 @@ Command | Description
 ⌥ j | scroll page down
 ⌘ b | move back a word
 ⌘ w | move forward a word
- 
-#### Panes
 ⌘ ⌃ h | move to pane on the left 
 ⌘ ⌃ j | move to pane below 
 ⌘ ⌃ k | move to pane above 
@@ -30,7 +30,8 @@ Command | Description
 ⌃ ⇧ l | move divider right 
 
 ## Vim
-
+Command | Description
+ --- | ---
 qq | delete buffer 
 qw | write and delete buffer 
 rr | open recently used menu 
