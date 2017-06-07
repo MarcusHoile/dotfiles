@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
@@ -41,7 +42,7 @@ Plugin 'qpkorr/vim-bufkill'
 
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
@@ -80,11 +81,11 @@ endif
 
 syntax on                      " Turn on syntax highlighting
 " Set the colorscheme
-" colorscheme dracula
+colorscheme jellybeans
 " colorscheme nova
-" colorscheme jellybeans
 " colorscheme seoul256
-colorscheme tender
+" colorscheme tender
+" colorscheme dracula
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
 set background=dark            " Use dark themes
@@ -269,7 +270,22 @@ map <Leader>fxa :call ESLintFixAll()<CR>
 " Airline.vim
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
-let g:airline_theme = 'tender'
+let g:airline_theme = 'solarized'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " Search
 
