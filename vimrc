@@ -274,9 +274,15 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
+      \   'filename': 'MyFilename'
       \ },
       \ }
+
+" returns filename with parent directory, eg session/service.js
+function! MyFilename()
+  return substitute(expand('%'), '.*/\([^/]\+/\)', '\1', '')
+endfunction
 
 " Search
 " Make CtrlP search in the current working directory by default
