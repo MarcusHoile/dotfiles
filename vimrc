@@ -48,9 +48,9 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'dracula/vim'
 Plugin 'trevordmiller/nova-vim'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'crusoexia/vim-monokai'
 Plugin 'jacoborus/tender.vim'
 Plugin 'junegunn/seoul256.vim'
+Plugin 'whatyouhide/vim-gotham'
 
 call vundle#end()
 filetype plugin indent on    " required
@@ -72,11 +72,14 @@ endif
 
 syntax on                      " Turn on syntax highlighting
 " Set the colorscheme
-colorscheme jellybeans
+" find more here https://github.com/flazz/vim-colorschemes/tree/master/colors
+colorscheme gotham256
+" colorscheme jellybeans
 " colorscheme nova
 " colorscheme seoul256
 " colorscheme tender
 " colorscheme dracula
+
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
 set background=dark            " Use dark themes
@@ -214,7 +217,7 @@ endfunction
 
 " Status line config
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'tender',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
