@@ -37,10 +37,7 @@ Plugin 'kchmck/vim-coffee-script'
 " Plugin 'marijnh/tern_for_vim'
 " Plugin 'mtscout6/syntastic-local-eslint.vim'
 
-" most recently used
-Plugin 'yegappan/mru'
 Plugin 'qpkorr/vim-bufkill'
-
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
@@ -67,13 +64,6 @@ set clipboard=unnamed
 set history=100                " Number of :cmdline history items to store
 set nostartofline              " Don't reset cursor to start of line when moving around
 set nofoldenable               " No folding
-inoremap jj <Esc>
-
-" Use ; for : in normal and visual mode, less keystrokes
-nnoremap ; :
-vnoremap ; :
-"nnoremap : ;
-"vnoremap : ;
 
 " Appearance
 if (has("termguicolors"))
@@ -132,10 +122,6 @@ set wildignore+=*/node_modules/*
 set wildignore+=*/vendor/*
 set wildignore+=*/log/*,*/tmp/*,*/build/*,*/dist/*,*/doc/*
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd
-nnoremap qq :BD<CR>
-nmap QQ :qall<CR>
-nnoremap qw :w<CR>:BD<CR>
-nnoremap rr :MRU<CR>
 
 "Use TAB to complete when typing words, else inserts TABs as usual.
 "Uses dictionary and source files to find matching words to complete.
@@ -191,46 +177,9 @@ au FocusLost * :wa
 augroup END
 
 
-" Mappings
-let mapleader=" "
-
-" Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" Resize splits with arrow keys
-nnoremap <Leader>h :vertical resize +1<CR>
-nnoremap <Leader>l :vertical resize -1<CR>
-nnoremap <Leader>j :resize +1<CR>
-nnoremap <Leader>k :resize -1<CR>
-
-" Switch between buffers
-nmap t :bn<CR>
-
-" Fix page up and down
-map <PageUp> <C-U>
-map <PageDown> <C-D>
-imap <PageUp> <C-O><C-U>
-imap <PageDown> <C-O><C-D>
-
-" Move based on display lines, not physical lines
-map j gj
-map k gk
-
-" Move selected lines up and down
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
-" Copy selected text
-vnoremap <C-c> "*y
 
 " Paste toggle
 set pastetoggle=<leader>p
-map <leader>p :set invpaste paste?<CR>
-
-" Clear Highlight
-nnoremap <Esc><Esc> :nohlsearch<CR>
 
 " Zoom / Restore splits
 function! ToggleZoomWindow() abort
@@ -245,7 +194,6 @@ function! ToggleZoomWindow() abort
   endif
 endfunction
 
-nnoremap <leader>z :call ToggleZoomWindow()<CR>
 
 " Fix eslint errors
 function! ESLintFix()
@@ -262,8 +210,6 @@ function! ESLintFixAll()
   :wa
 endfunction
 
-map <Leader>fx :call ESLintFix()<CR>
-map <Leader>fxa :call ESLintFixAll()<CR>
 
 
 " Status line config
@@ -289,12 +235,9 @@ endfunction
 " Useful for monorepos
 let g:ctrlp_cmd = 'CtrlP .'
 
-" search current word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Rg<SPACE>
 
 " Use rg (ripgrep) in CtrlP for listing files.
 " Respects .gitignore, and is fast enough to not require caching.
@@ -307,8 +250,6 @@ let g:ctrlp_custom_ignore = {
 \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp\|vendor/bundled$'
 \ }
 
-" List open buffers
-noremap <leader>b :CtrlPBuffer<CR>
 
 " Use rg (ripgrep) for searching in grep and Ack.vim
 if executable('rg')
@@ -340,13 +281,8 @@ xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 " Delimitmate
 let g:delimitMate_expand_cr = 1
 
-" Commentry
-map <leader>/ :Commentary<CR>
-
 " NERDTree
 let g:NERDTreeHijackNetrw = 0
-map <leader>d :NERDTreeToggle<CR>
-map <leader>n :NERDTreeFind<CR>
 let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'public[[dir]]', 'tmp[[dir]]', 'dist[[dir]]']
 
 " Syntastic
@@ -362,3 +298,72 @@ let g:vim_json_syntax_conceal = 0
 
 " Markdown
 let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
+
+" Mappings
+let mapleader=" "
+
+inoremap jj <Esc>
+
+" Use ; for : in normal and visual mode, less keystrokes
+nnoremap ; :
+vnoremap ; :
+"nnoremap : ;
+"vnoremap : ;
+
+nmap QQ :qall<CR>
+" Delete buffer and keep pane open
+nnoremap qq :BD<CR>
+" save and delete buffer and keep pane open
+nnoremap qw :w<CR>:BD<CR>
+" save
+nmap <leader>s :w<CR>
+" List open buffers
+noremap <leader>b :CtrlPBuffer<CR>
+" Most recently used
+noremap <leader>r :CtrlPMRU<CR>
+" Toggle Comments
+map <leader>/ :Commentary<CR>
+" Toggle paste
+map <leader>p :set invpaste paste?<CR>
+" Toggle Nerdtree
+map <leader>d :NERDTreeToggle<CR>
+" Show current file in nerdtree
+map <leader>n :NERDTreeFind<CR>
+" Open github page in browser
+map <leader>g :Gbrowse
+" Auto lint
+map <Leader>fx :call ESLintFix()<CR>
+map <Leader>fxa :call ESLintFixAll()<CR>
+" search current word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" search
+nnoremap \ :Rg<SPACE>
+nnoremap <leader>z :call ToggleZoomWindow()<CR>
+" Clear Highlight
+nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Resize splits
+nnoremap <Leader>h :vertical resize +1<CR>
+nnoremap <Leader>l :vertical resize -1<CR>
+nnoremap <Leader>j :resize +1<CR>
+nnoremap <Leader>k :resize -1<CR>
+
+" Switch between buffers
+nmap t :bn<CR>
+
+" Move based on display lines, not physical lines
+map j gj
+map k gk
+
+" Move selected lines up and down
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+" Copy selected text
+vnoremap <C-c> "*y
+
