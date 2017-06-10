@@ -34,11 +34,18 @@ Command | Description
  --- | ---
 qq | delete buffer 
 qw | write and delete buffer 
-rr | open recently used menu 
+QQ | :qall
+<space>r | open recently used menu 
+<space>b | list open buffers
+<space>v | select block 
+<space>g | open github page 
+<space>s | save
 jj | esc
 t | tab through buffers
 ⌃ ⇧ 6 | previous buffer
 gcap | toggle comment of block
-space / | toggle comment line 
 e | open a file
+vim | select inner ruby block
+vam | select around ruby block
+^ p | Search for file
 
