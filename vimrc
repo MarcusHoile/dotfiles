@@ -101,7 +101,9 @@ set listchars=tab:»·,trail:·,extends:>,precedes:<
 set scrolloff=3                " Minimal number of lines to keep above and below the cursor
 set sidescrolloff=3            " Minimal number of columns to keep to the left and right of the cursor
 set winminheight=0             " Allow splits to be reduced to a single line
-set splitright                 " Always open pane on right
+" Always open pane bottom right
+set splitright
+set splitbelow
 
 
 " Files and buffers
@@ -278,8 +280,6 @@ function! VisualFindAndReplaceWithSelection() range
   :w
 endfunction
 
-nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
-xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 " Delimitmate
 let g:delimitMate_expand_cr = 1
@@ -334,6 +334,7 @@ map <leader>d :NERDTreeToggle<CR>
 map <leader>n :NERDTreeFind<CR>
 " Open github page in browser
 map <leader>g :Gbrowse
+nnoremap <leader>v v%
 " Auto lint
 map <Leader>fx :call ESLintFix()<CR>
 map <Leader>fxa :call ESLintFixAll()<CR>
@@ -356,6 +357,9 @@ nnoremap <Leader>h :vertical resize +1<CR>
 nnoremap <Leader>l :vertical resize -1<CR>
 nnoremap <Leader>j :resize +1<CR>
 nnoremap <Leader>k :resize -1<CR>
+
+nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 " Switch between buffers
 nmap t :bn<CR>
