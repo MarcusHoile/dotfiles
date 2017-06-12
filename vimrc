@@ -335,6 +335,7 @@ map <leader>d :NERDTreeToggle<CR>
 map <leader>n :NERDTreeFind<CR>
 " Open github page in browser
 map <leader>g :Gbrowse
+" Select block
 nnoremap <leader>v v%
 " Auto lint
 map <Leader>fx :call ESLintFix()<CR>
