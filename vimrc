@@ -51,6 +51,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'jacoborus/tender.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'whatyouhide/vim-gotham'
+Plugin 'chrisbra/Colorizer'
 
 call vundle#end()
 filetype plugin indent on    " required
