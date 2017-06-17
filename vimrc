@@ -45,13 +45,17 @@ Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'chrisbra/Colorizer'
+
+" themes
 Plugin 'dracula/vim'
 Plugin 'trevordmiller/nova-vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'jacoborus/tender.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'whatyouhide/vim-gotham'
-Plugin 'chrisbra/Colorizer'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'gcmt/taboo.vim'
 
 call vundle#end()
 filetype plugin indent on    " required
@@ -65,6 +69,7 @@ set clipboard=unnamed
 set history=100                " Number of :cmdline history items to store
 set nostartofline              " Don't reset cursor to start of line when moving around
 set nofoldenable               " No folding
+set sessionoptions+=tabpages,globals
 
 " Appearance
 if (has("termguicolors"))
@@ -74,7 +79,8 @@ endif
 syntax on                      " Turn on syntax highlighting
 " Set the colorscheme
 " find more here https://github.com/flazz/vim-colorschemes/tree/master/colors
-colorscheme gotham256
+" colorscheme gotham256
+colorscheme hybrid
 " colorscheme jellybeans
 " colorscheme nova
 " colorscheme seoul256
@@ -217,6 +223,7 @@ function! ESLintFixAll()
 endfunction
 
 
+let g:hybrid_custom_term_colors = 1
 
 " Status line config
 let g:lightline = {
@@ -347,12 +354,8 @@ nnoremap \ :Rg<SPACE>
 nnoremap <leader>z :call ToggleZoomWindow()<CR>
 " Clear Highlight
 nnoremap <Esc><Esc> :nohlsearch<CR>
-
-" Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" Switch tabs
+map <Leader>t gt
 
 " Resize splits
 nnoremap <Leader>h :vertical resize +1<CR>
