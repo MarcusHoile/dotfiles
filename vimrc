@@ -46,6 +46,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'chrisbra/Colorizer'
+" rename tabs
+Plugin 'gcmt/taboo.vim'
 
 " themes
 Plugin 'dracula/vim'
@@ -55,7 +57,6 @@ Plugin 'jacoborus/tender.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'w0ng/vim-hybrid'
-Plugin 'gcmt/taboo.vim'
 
 call vundle#end()
 filetype plugin indent on    " required
@@ -80,12 +81,12 @@ syntax on                      " Turn on syntax highlighting
 " Set the colorscheme
 " find more here https://github.com/flazz/vim-colorschemes/tree/master/colors
 " colorscheme gotham256
-colorscheme hybrid
+" colorscheme hybrid
 " colorscheme jellybeans
 " colorscheme nova
 " colorscheme seoul256
 " colorscheme tender
-" colorscheme dracula
+colorscheme dracula
 
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
@@ -223,7 +224,7 @@ function! ESLintFixAll()
 endfunction
 
 
-let g:hybrid_custom_term_colors = 1
+" let g:hybrid_custom_term_colors = 1
 
 " Status line config
 let g:lightline = {
@@ -250,7 +251,7 @@ let g:ctrlp_cmd = 'CtrlP .'
 
 
 " bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+" command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
 
 " Use rg (ripgrep) in CtrlP for listing files.
 " Respects .gitignore, and is fast enough to not require caching.
@@ -328,6 +329,8 @@ nnoremap qq :BD<CR>
 nnoremap qw :w<CR>:BD<CR>
 " save
 nmap <leader>s :w<CR>
+" close search window
+nmap <leader>c :cclose
 " List open buffers
 noremap <leader>b :CtrlPBuffer<CR>
 " Most recently used
@@ -342,6 +345,8 @@ map <leader>d :NERDTreeToggle<CR>
 map <leader>n :NERDTreeFind<CR>
 " Open github page in browser
 map <leader>g :Gbrowse
+" yank entire file
+map <leader>y :%y+<CR>
 " Select block
 nnoremap <leader>v v%
 " Auto lint
@@ -353,7 +358,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap \ :Rg<SPACE>
 nnoremap <leader>z :call ToggleZoomWindow()<CR>
 " Clear Highlight
-nnoremap <Esc><Esc> :nohlsearch<CR>
+nnoremap <Leader>x :nohlsearch<CR>
 " Switch tabs
 map <Leader>t gt
 
@@ -365,9 +370,6 @@ nnoremap <Leader>k :resize -1<CR>
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
-
-" Switch between buffers
-nmap t :bn<CR>
 
 " Move based on display lines, not physical lines
 map j gj
