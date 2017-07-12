@@ -321,7 +321,7 @@ nnoremap qw :w<CR>:BD<CR>
 " save
 nmap <leader>s :w<CR>
 " close search window
-nmap <leader>c :cclose
+nmap <leader>c :cclose<CR>
 " List open buffers
 noremap <leader>b :CtrlPBuffer<CR>
 " Most recently used
