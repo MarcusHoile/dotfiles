@@ -20,7 +20,6 @@ Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'osyo-manga/vim-over'
 Plugin 'Raimondi/delimitMate'
-"Plugin 'scrooloose/syntastic'
 
 Plugin 'othree/html5.vim'
 Plugin 'tpope/vim-ragtag'
@@ -34,8 +33,8 @@ Plugin 'elzr/vim-json'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'w0rp/ale'
 " Plugin 'marijnh/tern_for_vim'
-" Plugin 'mtscout6/syntastic-local-eslint.vim'
 
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-commentary'
@@ -296,14 +295,6 @@ let g:delimitMate_expand_cr = 1
 " NERDTree
 let g:NERDTreeHijackNetrw = 0
 let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'public[[dir]]', 'tmp[[dir]]', 'dist[[dir]]']
-
-" Syntastic
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
 
 " JSON
 let g:vim_json_syntax_conceal = 0
