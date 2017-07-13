@@ -250,7 +250,7 @@ let g:ctrlp_cmd = 'CtrlP .'
 
 
 " bind \ (backward slash) to grep shortcut
-" command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
 
 " Use rg (ripgrep) in CtrlP for listing files.
 " Respects .gitignore, and is fast enough to not require caching.
