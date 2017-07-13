@@ -50,12 +50,13 @@ Plugin 'gcmt/taboo.vim'
 
 " themes
 Plugin 'dracula/vim'
-Plugin 'trevordmiller/nova-vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'jacoborus/tender.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'colepeters/spacemacs-theme.vim'
+Plugin 'juanpabloaj/vim-pixelmuerto'
 
 call vundle#end()
 filetype plugin indent on    " required
@@ -80,12 +81,11 @@ syntax on                      " Turn on syntax highlighting
 " Set the colorscheme
 " find more here https://github.com/flazz/vim-colorschemes/tree/master/colors
 " colorscheme gotham256
-" colorscheme hybrid
+colorscheme hybrid
 " colorscheme jellybeans
-" colorscheme nova
 " colorscheme seoul256
-" colorscheme tender
-colorscheme dracula
+" colorscheme dracula
+" colorscheme spacemacs-theme
 
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
