@@ -8,5 +8,6 @@ set linespace=2
 " set guifont=Input\ Mono:h12,Menlo:h12
 set macligatures
 " set guifont=Fira\ Code:h12
-set guifont=FuraCode\ Nerd\ Font:h12
+" set guifont=FuraCode\ Nerd\ Font
+set guifont=Monoid\ Nerd\ Font
 
