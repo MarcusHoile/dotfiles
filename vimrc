@@ -278,7 +278,7 @@ endfunction
 let g:delimitMate_expand_cr = 1
 
 " NERDTree
-let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeHijackNetrw = 1
 let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'public[[dir]]', 'tmp[[dir]]', 'dist[[dir]]']
 
 " JSON
