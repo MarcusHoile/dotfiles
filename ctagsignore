@@ -1,0 +1,11 @@
+.git
+vendor
+node_modules
+bower_components
+db
+tmp
+log
+public
+assets
+deps
+_build

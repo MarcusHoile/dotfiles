@@ -36,12 +36,13 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'w0rp/ale'
 " Plugin 'marijnh/tern_for_vim'
 
-Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'wellle/targets.vim'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'chrisbra/Colorizer'
@@ -81,11 +82,11 @@ syntax on                      " Turn on syntax highlighting
 " Set the colorscheme
 " find more here https://github.com/flazz/vim-colorschemes/tree/master/colors
 " colorscheme gotham256
-colorscheme hybrid
+" colorscheme hybrid
 " colorscheme jellybeans
 " colorscheme seoul256
 " colorscheme dracula
-" colorscheme spacemacs-theme
+colorscheme spacemacs-theme
 
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
@@ -102,7 +103,6 @@ set nowrap                     " Disable soft-wrap
 set showbreak=↪\               " Character to display at the start of soft-wrapped lines
 set lazyredraw                 " Don't redraw when we don't have to
 set incsearch                  " Shows the search as you type!
-set hlsearch                   " Highlight search matches
 set list                       " Show hidden characters
 set listchars=tab:»·,trail:·,extends:>,precedes:<
 set scrolloff=3                " Minimal number of lines to keep above and below the cursor
@@ -112,6 +112,7 @@ set winminheight=0             " Allow splits to be reduced to a single line
 set splitright
 set splitbelow
 
+set tags=./tags;,tags;
 
 " Files and buffers
 silent !mkdir -p $HOME/.vim/undo > /dev/null 2>&1
@@ -188,24 +189,8 @@ au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FocusLost * :wa
 augroup END
 
-
-
 " Paste toggle
 set pastetoggle=<leader>p
-
-" Zoom / Restore splits
-function! ToggleZoomWindow() abort
-  if exists('t:zoomed') && t:zoomed
-    exec t:zoom_winrestcmd
-    let t:zoomed = 0
-  else
-    let t:zoom_winrestcmd = winrestcmd()
-    resize
-    vertical resize
-    let t:zoomed = 1
-  endif
-endfunction
-
 
 " Fix eslint errors
 function! ESLintFix()
@@ -305,7 +290,7 @@ let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eru
 " Mappings
 let mapleader=" "
 
-inoremap jj <Esc>
+inoremap jk <Esc>
 
 " Use ; for : in normal and visual mode, less keystrokes
 nnoremap ; :
@@ -313,17 +298,10 @@ vnoremap ; :
 "nnoremap : ;
 "vnoremap : ;
 
-nmap QQ :qall<CR>
-" Delete buffer and keep pane open
-nnoremap qq :BD<CR>
-" save and delete buffer and keep pane open
-nnoremap qw :w<CR>:BD<CR>
 " save
 nmap <leader>s :w<CR>
 " close search window
 nmap <leader>c :cclose<CR>
-" List open buffers
-noremap <leader>b :CtrlPBuffer<CR>
 " Most recently used
 noremap <leader>r :CtrlPMRU<CR>
 " Toggle Comments
@@ -348,16 +326,10 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " search
 nnoremap \ :Rg<SPACE>
 nnoremap <leader>z :call ToggleZoomWindow()<CR>
-" Clear Highlight
-nnoremap <Leader>x :nohlsearch<CR>
+" Highlight
+nnoremap <Leader>h :set hlsearch<CR>
 " Switch tabs
 map <Leader>t gt
-
-" Resize splits
-nnoremap <Leader>h :vertical resize +1<CR>
-nnoremap <Leader>l :vertical resize -1<CR>
-nnoremap <Leader>j :resize +1<CR>
-nnoremap <Leader>k :resize -1<CR>
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
