@@ -6,5 +6,5 @@ set linespace=2
 
 " GUI Font
 set macligatures
-set guifont=FuraCode\ Nerd\ Font:h12
+set guifont=FuraCode\ Nerd\ Font:h14
 " set guifont=Monoid\ Nerd\ Font
