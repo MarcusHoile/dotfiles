@@ -286,7 +286,7 @@ let g:vim_json_syntax_conceal = 0
 
 " Markdown
 let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
-
+let g:ale_sign_column_always = 1
 " Mappings
 let mapleader=" "
 
