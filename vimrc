@@ -279,7 +279,7 @@ let g:delimitMate_expand_cr = 1
 
 " NERDTree
 let g:NERDTreeHijackNetrw = 1
-let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'public[[dir]]', 'tmp[[dir]]', 'dist[[dir]]']
+let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'public[[dir]]', 'tmp[[dir]]', 'dist[[dir]]', 'deps[[dir]]', '_build[[dir]]']
 
 " JSON
 let g:vim_json_syntax_conceal = 0
