@@ -34,7 +34,6 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'w0rp/ale'
-" Plugin 'marijnh/tern_for_vim'
 
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -45,6 +44,8 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wellle/targets.vim'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'elixir-lang/vim-elixir'
+" jump to def for elixir
+Plugin 'slashmili/alchemist.vim'
 Plugin 'chrisbra/Colorizer'
 " rename tabs
 Plugin 'gcmt/taboo.vim'
@@ -108,9 +109,6 @@ set listchars=tab:»·,trail:·,extends:>,precedes:<
 set scrolloff=3                " Minimal number of lines to keep above and below the cursor
 set sidescrolloff=3            " Minimal number of columns to keep to the left and right of the cursor
 set winminheight=0             " Allow splits to be reduced to a single line
-" Always open pane bottom right
-set splitright
-set splitbelow
 
 set tags=./tags;,tags;
 
@@ -283,12 +281,16 @@ let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'pu
 
 " JSON
 let g:vim_json_syntax_conceal = 0
+" keep gutter open
+let g:ale_sign_column_always = 1
 
 " Markdown
 let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
-let g:ale_sign_column_always = 1
+
 " Mappings
 let mapleader=" "
+let g:alchemist_tag_map = '<C-[>'
+let g:alchemist_tag_stack_map = '<C-a>'
 
 inoremap jk <Esc>
 
@@ -322,7 +324,7 @@ nnoremap <leader>v v%
 map <Leader>fx :call ESLintFix()<CR>
 map <Leader>fxa :call ESLintFixAll()<CR>
 " search current word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " search
 nnoremap \ :Rg<SPACE>
 nnoremap <leader>z :call ToggleZoomWindow()<CR>
