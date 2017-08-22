@@ -331,8 +331,8 @@ nnoremap <leader>z :call ToggleZoomWindow()<CR>
 " Highlight
 nnoremap <Leader>h :set hlsearch<CR>
 " add a blank lines
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
+nnoremap <S-Enter> O<Esc>
+nnoremap <C-Enter> o<Esc>
 " Switch tabs
 map <Leader>t gt
 
