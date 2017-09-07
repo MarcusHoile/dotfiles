@@ -44,6 +44,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wellle/targets.vim'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'airblade/vim-rooter'
 " jump to def for elixir
 Plugin 'slashmili/alchemist.vim'
 Plugin 'chrisbra/Colorizer'
@@ -86,8 +87,8 @@ syntax on                      " Turn on syntax highlighting
 " colorscheme hybrid
 " colorscheme jellybeans
 " colorscheme seoul256
-" colorscheme dracula
-colorscheme spacemacs-theme
+colorscheme dracula
+" colorscheme spacemacs-theme
 
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
@@ -230,7 +231,7 @@ endfunction
 " Make CtrlP search in the current working directory by default
 " Useful for monorepos
 let g:ctrlp_cmd = 'CtrlP .'
-
+let g:rooter_change_directory_for_non_project_files = ''
 
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
@@ -324,7 +325,7 @@ nnoremap <leader>v v%
 map <Leader>fx :call ESLintFix()<CR>
 map <Leader>fxa :call ESLintFixAll()<CR>
 " search current word under cursor
-nnoremap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " search
 nnoremap \ :Rg<SPACE>
 nnoremap <leader>z :call ToggleZoomWindow()<CR>
@@ -335,6 +336,8 @@ nnoremap <S-Enter> O<Esc>
 nnoremap <C-Enter> o<Esc>
 " Switch tabs
 map <Leader>t gt
+" tagbar and search tags
+nnoremap <leader>. :CtrlPTag<cr>
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
