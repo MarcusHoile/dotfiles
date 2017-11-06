@@ -11,8 +11,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'itchyny/lightline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'airblade/vim-gitgutter'
@@ -43,10 +41,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wellle/targets.vim'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
-Plugin 'elixir-lang/vim-elixir'
+Plugin 'elixir-editors/vim-elixir'
 Plugin 'airblade/vim-rooter'
 " jump to def for elixir
-Plugin 'slashmili/alchemist.vim'
+" Plugin 'slashmili/alchemist.vim'
 Plugin 'chrisbra/Colorizer'
 " rename tabs
 Plugin 'gcmt/taboo.vim'
@@ -167,7 +165,6 @@ set omnifunc=syntaxcomplete#Complete
 
 
 " File types
-filetype plugin indent on
 augroup filetypedetect
 au BufNewFile,BufRead *.{rjs,rbw,gem,gemspec,ru,rake} setlocal filetype=ruby
 au BufNewFile,BufRead {Gemfile,Guardfile,Rakefile,Capfile,Procfile} setlocal filetype=ruby
@@ -268,7 +265,7 @@ endfunction
 
 " Find/Replace within current visual selection
 function! VisualFindAndReplaceWithSelection() range
-  :'<,'>OverCommandLine s/
+  :'<,'>OverCommandLine s/\%V
   :w
 endfunction
 
@@ -284,14 +281,18 @@ let NERDTreeIgnore=['\~$', 'node_modules[[dir]]', 'bower_components[[dir]]', 'pu
 let g:vim_json_syntax_conceal = 0
 " keep gutter open
 let g:ale_sign_column_always = 1
+" call ale#linter#Define('elixir', {
+" \   'name': 'credo',
+" \   'executable': 'mix',
+" \   'command': 'mix credo suggest --strict --format=flycheck --read-from-stdin %s',
+" \   'callback': 'ale_linters#elixir#credo#Handle',
+" \})
 
 " Markdown
 let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
 
 " Mappings
 let mapleader=" "
-let g:alchemist_tag_map = '<C-[>'
-let g:alchemist_tag_stack_map = '<C-a>'
 
 inoremap jk <Esc>
 
