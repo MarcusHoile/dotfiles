@@ -44,3 +44,4 @@ export PATH="$HOME/.yarn/dist/bin:$PATH"
 export PATH="$HOME/.geckodriver:$PATH"
 export ERL_AFLAGS="-kernel shell_history enabled"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export EDITOR='vim'
