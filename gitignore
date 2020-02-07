@@ -4,6 +4,8 @@ bower_components
 .bundle
 vendor/bundle
 vendor/bundled
+.projections.json
+.elixir_ls
 
 # Output directories
 dist

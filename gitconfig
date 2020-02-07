@@ -1,13 +1,15 @@
 [user]
   name = marcushoile
   email = marcus.hoile@gmail.com
+[core]
+  editor = 'vim'
 [color]
   ui = auto
 [filter "media"]
   clean = git-media-clean %f
   smudge = git-media-smudge %f
 [push]
-  default = simple
+	default = simple
 [color]
   pager = true
   ui = auto
@@ -62,6 +64,6 @@
 [alias]
 	cb = rev-parse --symbolic-full-name --abbrev-ref HEAD
 	gp = !git push --set-upstream origin HEAD:$(git cb)
-	gup = !git fetch --prune origin && git rebase -p origin/$(git cb)
+	gup = !git fetch --prune origin && git rebase -r origin/$(git cb)
 [core]
-	excludesfile = /Users/marcushoile/.gitignore
+	excludesfile = /Users/marcus/.gitignore
