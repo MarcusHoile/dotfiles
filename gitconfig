@@ -67,3 +67,6 @@
 	gup = !git fetch --prune origin && git rebase -r origin/$(git cb)
 [core]
 	excludesfile = /Users/marcus/.gitignore
+	attributesfile = /Users/marcus/.gitattributes
+[pull]
+	rebase = true
