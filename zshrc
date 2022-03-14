@@ -16,6 +16,7 @@ newtab()
 {
     osascript -e 'activate application "iTerm"' -e 'tell application "System Events" to keystroke "d" using command down'
 }
+export PR_TEMPLATE="$(cat ${HOME}/Blake/PULL_REQUEST_TEMPLATE)"
 
 
 alias b="cd .."
@@ -31,6 +32,9 @@ alias gb="git branch"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gbclean="git branch --merged | grep -v "develop" | grep -v '\*' | xargs -n 1 git branch -d"
 alias gbfclean="git branch | grep -Ev '(master|develop)' | grep -v '^*' | xargs git branch -D"
+alias zp="code ${HOME}/Blake/dotfiles/zshrc"
+alias ghprc="gh pr create -b '${PR_TEMPLATE}' -t"
+alias ghprv="gh pr view --web"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
