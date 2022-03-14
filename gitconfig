@@ -70,3 +70,7 @@
 	attributesfile = /Users/marcus/.gitattributes
 [pull]
 	rebase = true
+[merge]
+	tool = code
+[url "git@github.com:blake-education/"]
+	insteadOf = https://github.com/blake-education/

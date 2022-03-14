@@ -4,8 +4,12 @@ bower_components
 .bundle
 vendor/bundle
 vendor/bundled
+vendor.js
+vendor.map
 .projections.json
 .elixir_ls
+PULL_REQUEST_TEMPLATE.md
+RELEASE_STATE
 
 # Output directories
 dist
@@ -67,3 +71,6 @@ $RECYCLE.BIN/
 *.lnk
 
 tags
+
+*.projections.json
+.vs_code

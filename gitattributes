@@ -22,3 +22,6 @@
 *.rs    diff=rust
 *.lisp  diff=lisp
 *.el    diff=lisp
+
+mix.lock merge=binary
+Gemfile.lock merge=binary

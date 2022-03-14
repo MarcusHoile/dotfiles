@@ -13,6 +13,9 @@
   "apps/**/lib/**/*.ex": {
     "alternate": "apps/{dirname}/test/{dirname}/{basename}_test.exs"
   },
+  "apps/**/lib/*.ex": {
+    "alternate": "apps/{dirname}/test/{basename}_test.exs"
+  },
   "lib/*.ex": {
     "alternate": "test/{}_test.exs"
   }
