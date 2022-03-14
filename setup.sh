@@ -20,8 +20,8 @@ cd `dirname $0`
 # Loop through each file
 for file in `ls .`; do
 
-  # Skip files that begin with an underscore, readme, and the setup file
-  if [[ $file =~ ^_.* ]] || [[ $file =~ ^README ]] || [[ $file =~ ^setup ]]; then
+  # Skip files that begin with an underscore, dot, readme, and the setup file
+  if [[ $file =~ ^(_|\.).* ]] || [[ $file =~ ^README ]] || [[ $file =~ ^setup ]]; then
     continue
   fi
 
