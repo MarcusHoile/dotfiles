@@ -32,8 +32,8 @@ alias gb="git branch"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gbclean="git branch --merged | grep -v "develop" | grep -v '\*' | xargs -n 1 git branch -d"
 alias gbfclean="git branch | grep -Ev '(master|develop)' | grep -v '^*' | xargs git branch -D"
-alias zp="code ${HOME}/Blake/dotfiles/zshrc"
-alias ghprc="gh pr create -b '${PR_TEMPLATE}' -t"
+alias zp="code ${HOME}/Blake/dotfiles/.zshrc"
+alias ghprc="gh pr create -d -b '${PR_TEMPLATE}' -t"
 alias ghprv="gh pr view --web"
 
 
