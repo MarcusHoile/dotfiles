@@ -16,25 +16,25 @@ newtab()
 {
     osascript -e 'activate application "iTerm"' -e 'tell application "System Events" to keystroke "d" using command down'
 }
-export PR_TEMPLATE="$(cat ${HOME}/Blake/PULL_REQUEST_TEMPLATE)"
+export PR_TEMPLATE="$(cat ${HOME}/.my_config/dotfiles/_github/PULL_REQUEST_TEMPLATE)"
 
 
 alias b="cd .."
-alias gcod="gco develop"
-alias gpo="git push -u origin"
-alias gcom="gco master"
-alias gm="git merge"
-alias grhh="git reset --hard head"
-alias s="git status"
-alias rs="bundle exec rails s"
-alias rsp="bundle exec rspec"
+alias be="bundle exec"
 alias gb="git branch"
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gbclean="git branch --merged | grep -v "develop" | grep -v '\*' | xargs -n 1 git branch -d"
 alias gbfclean="git branch | grep -Ev '(master|develop)' | grep -v '^*' | xargs git branch -D"
-alias zp="code ${HOME}/Blake/dotfiles/.zshrc"
+alias gcod="gco develop"
+alias gcom="gco master"
 alias ghprc="gh pr create -d -b '${PR_TEMPLATE}' -t"
 alias ghprv="gh pr view --web"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gm="git merge"
+alias gpo="git push -u origin"
+alias grhh="git reset --hard head"
+alias rs="bundle exec rails s"
+alias rsp="bundle exec rspec"
+alias s="git status"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
