@@ -74,3 +74,5 @@
 	tool = code
 [url "git@github.com:blake-education/"]
 	insteadOf = https://github.com/blake-education/
+[init]
+  templatedir = ~/.git_template
