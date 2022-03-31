@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# check if commit is merge commit or a commit ammend
+if [[ $2 = "merge" ]] || [[ $2 = "commit" ]]; then
+    exit
+fi
+ISSUE_KEY=`git branch | rg -o "\* (.*/)*[A-Z]{2,}-[0-9]+" | rg -o "[A-Z]{2,}-[0-9]+"`
+PR_TEMPLATE="${HOME}/.my_config/dotfiles/_github/PULL_REQUEST_TEMPLATE"
+if [ -z $ISSUE_KEY ]; then
+    # no issue key in branch, use the default message
+    gh pr create -d  -F $PR_TEMPLATE
+else
+    TITLE=`git branch | rg -o "\* .*" | rg -o --pcre2 "(?<=${ISSUE_KEY}-).*" | tr '-' ' '`
+    # issue key matched from branch prefix, prepend to commit message
+    TEMP=`mktemp /tmp/pr-body-XXXXX`
+    (echo "$(cat  $PR_TEMPLATE)") >> $TEMP
+    (echo "\nhttps://blakeelearning.atlassian.net/browse/${ISSUE_KEY}\n") >> $TEMP
+
+    PR_TITLE="[$ISSUE_KEY] $TITLE"
+    PR_BODY=$TEMP
+    gh pr create -d -t "$PR_TITLE" -F $PR_BODY
+fi

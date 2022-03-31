@@ -26,7 +26,7 @@ alias gbclean="git branch --merged | grep -v "develop" | grep -v '\*' | xargs -n
 alias gbfclean="git branch | grep -Ev '(master|develop)' | grep -v '^*' | xargs git branch -D"
 alias gcod="gco develop"
 alias gcom="gco master"
-alias ghprc="gh pr create -d -b '${PR_TEMPLATE}' -t"
+alias ghprc="${HOME}/.my_config/dotfiles/_github/prepare-github-template"
 alias ghprv="gh pr view --web"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gm="git merge"
