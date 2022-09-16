@@ -25,3 +25,4 @@
 
 mix.lock merge=binary
 Gemfile.lock merge=binary
+Gemfile_next.lock merge=binary

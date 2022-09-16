@@ -10,6 +10,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Source local env
+if [[ -s "${HOME}/.dev.env" ]]; then
+  source "${HOME}/.dev.env"
+fi
+
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 newtab()
@@ -28,13 +33,14 @@ alias gcod="gco develop"
 alias gcom="gco master"
 alias ghprc="${HOME}/.my_config/dotfiles/_github/prepare-github-template"
 alias ghprv="gh pr view --web"
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count 10"
 alias gm="git merge"
 alias gpo="git push -u origin"
 alias grhh="git reset --hard head"
 alias rs="bundle exec rails s"
 alias rsp="bundle exec rspec"
 alias s="git status"
+alias mylo-shell-prod="ssh marcus@${MY_LOCAL_OPEN_PROD}"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

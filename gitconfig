@@ -76,3 +76,4 @@
 	insteadOf = https://github.com/blake-education/
 [init]
   templatedir = ~/.git_template
+	defaultBranch = develop

@@ -8,6 +8,7 @@ vendor.js
 vendor.map
 .projections.json
 .elixir_ls
+.gitattributes
 PULL_REQUEST_TEMPLATE.md
 RELEASE_STATE
 
