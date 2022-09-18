@@ -1,3 +1,4 @@
 gem: --no-rdoc --no-ri
 \ngem: --no-document
 \ngem: --no-document
+gem: --no-document # bx-auto-insert:no-gem-documentation

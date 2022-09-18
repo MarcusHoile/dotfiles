@@ -15,7 +15,7 @@ if [[ -s "${HOME}/.dev.env" ]]; then
   source "${HOME}/.dev.env"
 fi
 
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 newtab()
 {

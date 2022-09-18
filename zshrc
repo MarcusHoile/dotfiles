@@ -39,5 +39,10 @@ alias zp="code ${HOME}/.my_config/dotfiles/.zshrc"
 
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/marcus/.rd/bin:$PATH"
+export PATH="/Users/marcushoile/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+eval "$($HOME/Blake/bs/bin/bs init -)"
+eval "$($HOME/Blake/bd/bin/bd init -)"
+export PATH=$PATH:$HOME/Blake/bk8s/bin
+source $HOME/Blake/bk8s/completions/bk.bash
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
