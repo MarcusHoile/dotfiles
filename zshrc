@@ -33,8 +33,8 @@ PATH=$PATH:${GOPATH//://bin:}/bin
 source "${HOME}/.my_config/dotfiles/.zshrc"
 
 alias bk="open https://buildkite.com/blake-education/$(basename ${PWD} | tr '_' '-')"
-alias oadmin="code ${HOME}/Blake/workspaces/BlakeAdmin.code-workspace"
-alias ore="code ${HOME}/Blake/workspaces/Readingeggs.code-workspace"
+alias oadmin="code ${HOME}/Blake/workspaces/blake-admin.code-workspace"
+alias ore="code ${HOME}/Blake/workspaces/readingeggs.code-workspace"
 alias zp="code ${HOME}/.my_config/dotfiles/.zshrc"
 
 

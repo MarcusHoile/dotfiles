@@ -66,7 +66,7 @@
 	gp = !git push --set-upstream origin HEAD:$(git cb)
 	gup = !git fetch --prune origin && git rebase -r origin/$(git cb)
 [core]
-	excludesfile = /Users/marcus/.gitignore
+	excludesfile = /Users/marcushoile/.gitignore
 	attributesfile = /Users/marcus/.gitattributes
 [pull]
 	rebase = true
