@@ -23,6 +23,6 @@
 *.lisp  diff=lisp
 *.el    diff=lisp
 
-mix.lock merge=binary
-Gemfile.lock merge=binary
-Gemfile_next.lock merge=binary
+*.lock merge=binary
+*.po merge=binary
+*.graphql merge=binary

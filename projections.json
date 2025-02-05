@@ -1,14 +1,36 @@
 {
+  "packages/**/src/*.js": {
+    "alternate": "packages/{dirname}/tests/{basename}.test.js"
+  },
+  "packages/**/src/*.ts": {
+    "alternate": "packages/{dirname}/tests/{basename}.test.ts"
+  },
   "*.js": {
     "alternate": [
       "{}.test.js",
       "{dirname}/__test__/{basename}.test.js"
     ]
   },
+  "**/app/**/*.gts": {
+    "alternate": [
+      "{dirname}/tests/{dirname}/{basename}-test.gts"
+    ]
+  },
+  "**/app/**/*.ts": {
+    "alternate": [
+      "{dirname}/tests/{dirname}/{basename}-test.ts",
+      "{dirname}/tests/unit/{dirname}/{basename}-test.ts",
+      "{dirname}/tests/acceptance/{dirname}/{basename}-test.ts",
+      "{dirname}/tests/integration/{dirname}/{basename}-test.ts"
+    ]
+  },
   "app/*.rb": {
     "alternate": [
       "spec/{}_spec.rb"
     ]
+  },
+  "packs/**/app/**/*.rb": {
+    "alternate": "packs/{dirname}/spec/{dirname}/{basename}_spec.rb"
   },
   "apps/**/lib/**/*.ex": {
     "alternate": "apps/{dirname}/test/{dirname}/{basename}_test.exs"

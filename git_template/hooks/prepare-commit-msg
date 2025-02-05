@@ -12,7 +12,13 @@ if [ $? -ne 0 ]; then
     # no issue key in branch, use the default message
     exit
 fi
+
+CONVENTIONAL_COMMIT_PREFIX=`cat $1 | grep -o "^.*:"`
+if [ "$CONVENTIONAL_COMMIT_PREFIX" ]; then
+  exit
+fi
+
 # issue key matched from branch prefix, prepend to commit message
 TEMP=`mktemp /tmp/commitmsg-XXXXX`
-(echo "$ISSUE_KEY $(cat  $1)") > $TEMP
+(echo "$ISSUE_KEY $(cat $1)") > $TEMP
 cat $TEMP > $1

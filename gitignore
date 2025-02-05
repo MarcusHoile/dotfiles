@@ -75,3 +75,8 @@ tags
 
 *.projections.json
 .vs_code
+.vscode
+
+*jupiter.dev.env
+
+priv/plts/

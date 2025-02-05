@@ -1,6 +1,6 @@
 [user]
-  name = marcushoile
-  email = marcus.hoile@gmail.com
+	name = Marcus
+	email = marcus.hoile@3plearning.com
 [core]
   editor = 'vim'
 [color]
@@ -68,6 +68,10 @@
 [core]
 	excludesfile = /Users/marcushoile/.gitignore
 	attributesfile = /Users/marcus/.gitattributes
+	hooksPath = /Users/marcushoile/.git_template/hooks
+	hooksPath = /Users/marcushoile/.gitattributes
+	hooksPath = /Users/marcushoile/.git_template/hooks
+	attributesfile = /Users/marcushoile/.gitattributes
 [pull]
 	rebase = true
 [merge]
@@ -77,3 +81,16 @@
 [init]
   templatedir = ~/.git_template
 	defaultBranch = develop
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/marcushoile/.stCommitMsg
