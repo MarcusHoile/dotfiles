@@ -32,5 +32,25 @@ if [[ -z ${THIS_IS_FINE:-} ]]; then
 else
   echo "Skipping pre-commit check for debugging code."
 fi
+
+# Check if we're in the gravity repo and run mix phx.digest.clean --all
+REPO_NAME=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)" 2>/dev/null || echo "")
+if [[ "$REPO_NAME" == "gravity" ]]; then
+  # Check if any files in priv/static have changed
+  STATIC_FILES_CHANGED=$(git diff --cached --name-only | grep "^priv/static/" || true)
+
+  if [[ -n "$STATIC_FILES_CHANGED" ]]; then
+    echo "Static files changed, running mix phx.digest.clean --all in gravity repo..."
+    if command -v mix &> /dev/null; then
+      mix phx.digest.clean --all
+      git add priv/static/
+    else
+      echo "Warning: mix command not found, skipping digest clean"
+    fi
+  else
+    echo "No static files changed, skipping digest clean"
+  fi
+fi
+
 # returns 0 (true) if $FORBIDDEN_FOUND is empty
 [[ -z $FORBIDDEN_FOUND ]]

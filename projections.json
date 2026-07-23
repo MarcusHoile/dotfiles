@@ -3,18 +3,13 @@
     "alternate": "packages/{dirname}/tests/{basename}.test.js"
   },
   "packages/**/src/*.ts": {
-    "alternate": "packages/{dirname}/tests/{basename}.test.ts"
+    "alternate": ["packages/{dirname}/tests/{basename}.test.ts", "packages/{dirname}/test/{basename}.spec.ts"]
   },
   "*.js": {
-    "alternate": [
-      "{}.test.js",
-      "{dirname}/__test__/{basename}.test.js"
-    ]
+    "alternate": ["{}.test.js", "{dirname}/__test__/{basename}.test.js"]
   },
   "**/app/**/*.gts": {
-    "alternate": [
-      "{dirname}/tests/{dirname}/{basename}-test.gts"
-    ]
+    "alternate": ["{dirname}/tests/{dirname}/{basename}-test.gts"]
   },
   "**/app/**/*.ts": {
     "alternate": [
@@ -25,9 +20,7 @@
     ]
   },
   "app/*.rb": {
-    "alternate": [
-      "spec/{}_spec.rb"
-    ]
+    "alternate": ["spec/{}_spec.rb"]
   },
   "packs/**/app/**/*.rb": {
     "alternate": "packs/{dirname}/spec/{dirname}/{basename}_spec.rb"
@@ -40,5 +33,8 @@
   },
   "lib/*.ex": {
     "alternate": "test/{}_test.exs"
+  },
+  "**/src/main/java/**/*.java": {
+    "alternate": "{dirname}/src/test/java/{dirname}/{basename}Test.java"
   }
 }

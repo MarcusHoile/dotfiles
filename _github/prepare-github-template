@@ -6,7 +6,7 @@ if [[ $2 = "merge" ]] || [[ $2 = "commit" ]]; then
 fi
 ISSUE_KEY=`git branch | rg -o "\* (.*/)*[A-Z]{2,}-[0-9]+" | rg -o "[A-Z]{2,}-[0-9]+"`
 PR_TEMPLATE="${HOME}/.my_config/dotfiles/_github/PULL_REQUEST_TEMPLATE"
-if [[ $PWD =~ blake-shared ]]; then
+if [[ $PWD =~ blake-shared|teacher-ui ]]; then
     # use the default pr template for blake-shared
     gh pr create -d
 elif [ -z $ISSUE_KEY ]; then
@@ -17,7 +17,8 @@ else
     # issue key matched from branch prefix, prepend to commit message
     TEMP=`mktemp /tmp/pr-body-XXXXX`
     (echo "$(cat  $PR_TEMPLATE)") >> $TEMP
-    (echo "\nhttps://3plearning.atlassian.net/browse/${ISSUE_KEY}\n") >> $TEMP
+    # (echo "\nhttps://3plearning.atlassian.net/browse/${ISSUE_KEY}\n") >> $TEMP
+    (echo "\nhttps://linear.app/3plearning/issue/${ISSUE_KEY}\n") >> $TEMP
 
     PR_TITLE="[$ISSUE_KEY] $TITLE"
     PR_BODY=$TEMP

@@ -8,6 +8,7 @@ vendor.js
 vendor.map
 .projections.json
 .elixir_ls
+.elixir-tools
 .gitattributes
 PULL_REQUEST_TEMPLATE.md
 RELEASE_STATE
@@ -75,8 +76,16 @@ tags
 
 *.projections.json
 .vs_code
-.vscode
 
 *jupiter.dev.env
 
 priv/plts/
+.husky/pre-commit
+
+# TBC
+**/hooks/*
+**/*.instructions.md
+.github/copilot-instructions.md
+.elixir-phoenix-guide-project.json
+AGENTS.md
+**/.claude/settings.local.json
