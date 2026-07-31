@@ -3,6 +3,8 @@ set nocompatible
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let g:in_vscode = exists('g:vscode')
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -11,7 +13,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'itchyny/lightline.vim'
+if !g:in_vscode
+  Plugin 'itchyny/lightline.vim'
+endif
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
@@ -88,13 +92,22 @@ syntax on                      " Turn on syntax highlighting
 colorscheme dracula
 " colorscheme spacemacs-theme
 
+" Highlight yanked text briefly
+highlight YankHighlight guibg=#44475a
+augroup YankHighlight
+  autocmd!
+  autocmd TextYankPost * silent! lua vim.hl.on_yank({higroup = "YankHighlight", timeout = 200})
+augroup END
+
 set t_Co=256                   " Use all 265 colours
 set synmaxcol=300              " Number of columns to apply syntax highlighting
 set background=dark            " Use dark themes
-set ruler                      " Show the cursor position
-set showcmd                    " Show the (partial) command as it’s being typed
+if !g:in_vscode
+  set ruler                    " Show the cursor position
+  set showcmd                  " Show the (partial) command as it’s being typed
+  set laststatus=2             " Always show status line
+endif
 set noshowmode                 " Don't show the current mode (airline.vim takes care of us)
-set laststatus=2               " Always show status line
 set visualbell                 " Use visual bell instead of audible bell (annnnnoying)
 set title                      " Show the filename in the window titlebar
 set number                     " Enable line numbers
@@ -185,8 +198,10 @@ au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FocusLost * :wa
 augroup END
 
-" Paste toggle
-set pastetoggle=<leader>p
+" Paste toggle (nvim removed 'pastetoggle'; bracketed paste + <leader>p mapping below cover it)
+if !has('nvim')
+  set pastetoggle=<leader>p
+endif
 
 " Fix eslint errors
 function! ESLintFix()
@@ -207,22 +222,24 @@ endfunction
 " let g:hybrid_custom_term_colors = 1
 
 " Status line config
-let g:lightline = {
-      \ 'colorscheme': 'tender',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'filename': 'MyFilename'
-      \ },
-      \ }
+if !g:in_vscode
+  let g:lightline = {
+        \ 'colorscheme': 'tender',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'fugitive#head',
+        \   'filename': 'MyFilename'
+        \ },
+        \ }
 
-" returns filename with parent directory, eg session/service.js
-function! MyFilename()
-  return substitute(expand('%'), '.*/\([^/]\+/\)', '\1', '')
-endfunction
+  " returns filename with parent directory, eg session/service.js
+  function! MyFilename()
+    return substitute(expand('%'), '.*/\([^/]\+/\)', '\1', '')
+  endfunction
+endif
 
 " Search
 " Make CtrlP search in the current working directory by default
